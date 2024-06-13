@@ -18,31 +18,6 @@ const statusElement = document.getElementById('status');
             statusElement.textContent = `Disconnected: ${reason}. Attempting to reconnect...`;
         });
 
-        socket.on('reconnect', (attemptNumber) => {
-            console.log(`Reconnected on attempt #${attemptNumber}`);
-            statusElement.textContent = 'Reconnected';
-        });
-
-        socket.on('reconnect_attempt', (attemptNumber) => {
-            console.log(`Reconnection attempt #${attemptNumber}`);
-            statusElement.textContent = `Reconnection attempt #${attemptNumber}`;
-        });
-
-        socket.on('reconnect_error', (error) => {
-            console.error('Reconnection error:', error);
-            statusElement.textContent = 'Reconnection error';
-        });
-
-        socket.on('reconnect_failed', () => {
-            console.error('Reconnection failed');
-            statusElement.textContent = 'Reconnection failed';
-        });
-
-        // Example: Send a message to the server
-        function sendMessage(message) {
-            socket.emit('sendMessage', message);
-        }
-
 // DOM Elements
 const pollList = document.getElementById('pollList');
 const generatePollBtn = document.getElementById('generatePollBtn');

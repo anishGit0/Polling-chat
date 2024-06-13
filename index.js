@@ -24,10 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: 'https://polling-chat.vercel.app',
+        origin: '*',
         methods: ['GET', 'POST'],
-        allowedHeaders: ['Content-Type'],
-        credentials: true
     }
 });
 
