@@ -21,7 +21,7 @@ const io = Server(server, {
 });
 // Use CORS middleware for all routes
 app.use(cors({
-    origin: ['https://polling-chat.vercel.app'],
+    origin: ['http://localhost:4000'],
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type'],
     credentials: true
