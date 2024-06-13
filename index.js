@@ -9,6 +9,17 @@ const cors = require('cors');
 // Creating an Express application
 const app = express();
 
+app.use(cors({
+    origin: 'https://polling-chat.vercel.app',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
+    credentials: true
+}));
+
+// Serve static files from the 'public' directory and it is the frontend for me 
+// app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Configurations
 const server = http.createServer(app);
 const io = Server(server, {
@@ -20,20 +31,13 @@ const io = Server(server, {
     }
 });
 // Use CORS middleware for all routes
-app.use(cors({
-    origin: 'https://polling-chat.vercel.app',
-    methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type'],
-    credentials: true
-}));
+
 dotenv.config();
 
 // Array to store poll data
 let polls = [];
 
-// Serve static files from the 'public' directory and it is the frontend for me 
-// app.use(express.static('public'));
-app.use(express.static(path.join(__dirname, 'public')));
+
 
 // Event listener for new client connections
 io.on('connection', (socket) => {
@@ -70,5 +74,5 @@ io.on('connection', (socket) => {
 });
 
 // Start the server on the specified port
-const port = process.env.PORT;
+const port = process.env.PORT || 4000;
 server.listen(port, () => console.log(`Server is running on port ${port}`));
