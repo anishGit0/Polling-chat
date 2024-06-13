@@ -22,53 +22,5 @@
     </div>
     <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
     <script src="index.js"></script>
-    <script>
-        const statusElement = document.getElementById('status');
-        const socket = io('http://localhost:4000', {
-            reconnection: true,
-            reconnectionAttempts: Infinity,
-            reconnectionDelay: 1000,
-            reconnectionDelayMax: 5000,
-            timeout: 20000
-        });
-
-        socket.on('connect', () => {
-            console.log('Connected to Socket.IO server');
-            statusElement.textContent = 'Connected';
-        });
-
-        socket.on('disconnect', (reason) => {
-            console.log(`Disconnected: ${reason}`);
-            statusElement.textContent = `Disconnected: ${reason}. Attempting to reconnect...`;
-            if (reason === 'io server disconnect') {
-                socket.connect();
-            }
-        });
-
-        socket.on('reconnect_attempt', (attemptNumber) => {
-            console.log(`Reconnection attempt #${attemptNumber}`);
-            statusElement.textContent = `Reconnection attempt #${attemptNumber}`;
-        });
-
-        socket.on('reconnect', (attemptNumber) => {
-            console.log(`Reconnected on attempt #${attemptNumber}`);
-            statusElement.textContent = 'Reconnected';
-        });
-
-        socket.on('reconnect_error', (error) => {
-            console.error('Reconnection error:', error);
-            statusElement.textContent = 'Reconnection error';
-        });
-
-        socket.on('reconnect_failed', () => {
-            console.error('Reconnection failed');
-            statusElement.textContent = 'Reconnection failed';
-        });
-
-        socket.on('connect_error', (error) => {
-            console.error('Connection error:', error);
-            statusElement.textContent = 'Connection error';
-        });
-    </script>
 </body>
 </html>
