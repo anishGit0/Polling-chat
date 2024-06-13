@@ -33,7 +33,7 @@ let polls = [];
 
 // Serve static files from the 'public' directory and it is the frontend for me 
 // app.use(express.static('public'));
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Event listener for new client connections
 io.on('connection', (socket) => {
