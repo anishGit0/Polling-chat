@@ -18,7 +18,9 @@ const io = new Server(server, {
         origin: ['https://polling-chat.vercel.app'],
         methods: ['GET', 'POST'],
         allowedHeaders: ['Content-Type'],
-        credentials: true
+        credentials: true,
+        path: '/socket.io',
+        transports: ['polling']
     }
 });
 // Use CORS middleware for all routes
