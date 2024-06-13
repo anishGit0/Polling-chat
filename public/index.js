@@ -1,5 +1,5 @@
 // Initialize Socket.io connection
-const socket = io();
+const socket = io('http://localhost:4000');
 
 // DOM Elements
 const pollList = document.getElementById('pollList');
