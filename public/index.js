@@ -1,13 +1,47 @@
 // Initialize Socket.io connection
-const socket = io('http://localhost:4000');
+const statusElement = document.getElementById('status');
+        const socket = io('http://localhost:4000', {
+            reconnection: true,            // Enable reconnection
+            reconnectionAttempts: Infinity, // Try to reconnect forever
+            reconnectionDelay: 1000,        // Initial delay between reconnect attempts
+            reconnectionDelayMax: 5000,     // Maximum delay between reconnect attempts
+            timeout: 20000,                 // Timeout for reconnection attempts
+        });
 
-socket.on('connect', () => {
-    console.log('Connected to Socket.IO server');
-  });
+        socket.on('connect', () => {
+            console.log('Connected to Socket.IO server');
+            statusElement.textContent = 'Connected';
+        });
 
-  socket.on('disconnect', () => {
-    console.log('Disconnected from Socket.IO server');
-  });
+        socket.on('disconnect', (reason) => {
+            console.log(`Disconnected: ${reason}`);
+            statusElement.textContent = `Disconnected: ${reason}. Attempting to reconnect...`;
+        });
+
+        socket.on('reconnect', (attemptNumber) => {
+            console.log(`Reconnected on attempt #${attemptNumber}`);
+            statusElement.textContent = 'Reconnected';
+        });
+
+        socket.on('reconnect_attempt', (attemptNumber) => {
+            console.log(`Reconnection attempt #${attemptNumber}`);
+            statusElement.textContent = `Reconnection attempt #${attemptNumber}`;
+        });
+
+        socket.on('reconnect_error', (error) => {
+            console.error('Reconnection error:', error);
+            statusElement.textContent = 'Reconnection error';
+        });
+
+        socket.on('reconnect_failed', () => {
+            console.error('Reconnection failed');
+            statusElement.textContent = 'Reconnection failed';
+        });
+
+        // Example: Send a message to the server
+        function sendMessage(message) {
+            socket.emit('sendMessage', message);
+        }
 
 // DOM Elements
 const pollList = document.getElementById('pollList');
