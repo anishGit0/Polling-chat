@@ -15,7 +15,7 @@ app.use(cors());
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-      origin: "*", // allow any origin for CORS
+      origin: "http://localhost:4000", // allow origin for CORS
       methods: ["GET", "POST"]
     }
 });
