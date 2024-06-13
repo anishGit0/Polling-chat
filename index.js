@@ -10,7 +10,12 @@ const app = express();
 
 // Configurations
 const server = http.createServer(app);
-const io = socketIo(server);
+const io = socketIo(server, {
+    cors: {
+      origin: "*", // allow any origin for CORS
+      methods: ["GET", "POST"]
+    }
+});
 dotenv.config();
 
 // Array to store poll data
