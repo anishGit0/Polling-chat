@@ -1,19 +1,17 @@
 // All the  imports are here
 const express = require('express');
 const http = require('http');
-const { Server } = require('socket.io');
+const Server = require('socket.io');
 const dotenv = require("dotenv");
 const path = require('path');
 const cors = require('cors');
-
-
 
 // Creating an Express application
 const app = express();
 
 // Configurations
 const server = http.createServer(app);
-const io = new Server(server, {
+const io = Server(server, {
     cors: {
         origin: ['https://polling-chat.vercel.app'],
         methods: ['GET', 'POST'],
