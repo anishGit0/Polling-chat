@@ -1,5 +1,11 @@
 // Initialize Socket.io connection
-const socket = io('https://polling-chat.vercel.app');
+const socket = io('https://polling-chat.vercel.app', {
+    transports: ['polling'],
+    path: '/socket.io',
+    query: {
+        EIO: 4
+    }
+});
 
 // DOM Elements
 const pollList = document.getElementById('pollList');
