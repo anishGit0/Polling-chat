@@ -26,6 +26,8 @@ const io = new Server(server, {
     cors: {
         origin: 'https://polling-chat.vercel.app',
         methods: ['GET', 'POST'],
+        allowedHeaders: ['Content-Type'],
+        credentials: true
     }
 });
 
