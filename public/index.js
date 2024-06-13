@@ -1,38 +1,5 @@
 // Initialize Socket.io connection
-const socket = io('http://localhost:4000', {
-    reconnection: true,
-    reconnectionAttempts: Infinity,
-    reconnectionDelay: 1000,
-    reconnectionDelayMax: 5000
-});
-
-socket.on('connect', () => {
-    console.log('Connected to Socket.IO server');
-  });
-
-  socket.on('disconnect', (reason) => {
-    console.log(`Disconnected: ${reason}`);
-    if (reason === 'io server disconnect') {
-      // The disconnection was initiated by the server, you need to manually reconnect
-      socket.connect();
-    }
-  });
-
-  socket.on('reconnect_attempt', (attemptNumber) => {
-    console.log(`Reconnection attempt #${attemptNumber}`);
-  });
-
-  socket.on('reconnect', (attemptNumber) => {
-    console.log(`Reconnected on attempt #${attemptNumber}`);
-  });
-
-  socket.on('reconnect_error', (error) => {
-    console.error('Reconnection error:', error);
-  });
-
-  socket.on('reconnect_failed', () => {
-    console.error('Reconnection failed');
-  });
+const socket = io('http://localhost:4000');
 
 // DOM Elements
 const pollList = document.getElementById('pollList');
