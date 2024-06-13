@@ -9,16 +9,25 @@ const cors = require('cors');
 
 // Creating an Express application
 const app = express();
-app.use(cors());
 
 // Configurations
 const server = http.createServer(app);
 const io = socketIo(server, {
     cors: {
-      origin: "http://localhost:4000", // allow origin for CORS
-      methods: ["GET", "POST"]
+        origin: ['https://polling-chat.vercel.app'],
+        methods: ['GET', 'POST'],
+        allowedHeaders: ['Content-Type'],
+        credentials: true
     }
 });
+
+// Use CORS middleware for all routes
+app.use(cors({
+    origin: ['https://polling-chat.vercel.app'],
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
+    credentials: true
+}));
 dotenv.config();
 
 // Array to store poll data
