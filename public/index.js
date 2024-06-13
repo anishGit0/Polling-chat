@@ -1,6 +1,14 @@
 // Initialize Socket.io connection
 const socket = io('http://localhost:4000');
 
+socket.on('connect', () => {
+    console.log('Connected to Socket.IO server');
+  });
+
+  socket.on('disconnect', () => {
+    console.log('Disconnected from Socket.IO server');
+  });
+
 // DOM Elements
 const pollList = document.getElementById('pollList');
 const generatePollBtn = document.getElementById('generatePollBtn');
