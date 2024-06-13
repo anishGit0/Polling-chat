@@ -1,7 +1,7 @@
 // All the  imports are here
 const express = require('express');
 const http = require('http');
-const Server = require('socket.io');
+const { Server } = require("socket.io");
 const dotenv = require("dotenv");
 const path = require('path');
 const cors = require('cors');
@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Configurations
 const server = http.createServer(app);
-const io = Server(server, {
+const io = new Server(server, {
     cors: {
         origin: 'https://polling-chat.vercel.app',
         methods: ['GET', 'POST'],
@@ -30,7 +30,6 @@ const io = Server(server, {
         credentials: true
     }
 });
-// Use CORS middleware for all routes
 
 dotenv.config();
 
