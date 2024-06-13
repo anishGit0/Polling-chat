@@ -13,7 +13,7 @@ const app = express();
 const server = http.createServer(app);
 const io = Server(server, {
     cors: {
-        origin: 'https://polling-chat.vercel.app',
+        origin: 'http://localhost:4000',
         methods: ['GET', 'POST'],
         allowedHeaders: ['Content-Type'],
         credentials: true
