@@ -1,0 +1,27 @@
+# Real-time Polling and Chat Application
+
+This project is a real-time polling and chat application built with Node.js, Express, and Socket.io. The application allows users to create polls, vote on poll options, and chat with each other in real-time.
+
+## Features
+
+1. **Real-time Polling**: Users can create polls and vote on options. Poll results are updated in real-time.
+2. **Real-time Chat**: Users can send and receive chat messages in real-time.
+3. **Feedback on Votes**: Users receive immediate feedback on whether their vote is correct or not.
+4. **Correct Answer Display**: Users can see the correct answer for each poll.
+
+## Start
+- Node.js
+- npm (Node Package Manager)
+
+### Install the dependencies:
+npm install
+
+## Start the server:
+npm start
+
+## Open your browser and navigate to 
+`http://localhost:4000`
+
+## Code Overview
+Client-side (`public/index.js`)
+Server-side (index.js)

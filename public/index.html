@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Polling and Chat Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <div id="polls">
+            <h2>Polls</h2>
+            <div id="pollList"></div>
+            <button id="generatePollBtn">Generate Poll</button>
+        </div>
+        <div id="chat">
+            <h2>Chat</h2>
+            <div id="messages"></div>
+            <input id="messageInput" type="text" placeholder="Type your message..." autocomplete="off" required>
+            <button id="sendMessageBtn">Send</button>
+        </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

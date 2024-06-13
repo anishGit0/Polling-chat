@@ -1,0 +1,92 @@
+/* style.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+#polls, #chat {
+  width: 45%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+#pollList, #messages {
+  border: 1px solid #ddd;
+  padding: 10px;
+  height: 300px;
+  overflow-y: scroll;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+input, button {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#generatePollBtn {
+  background-color: #28a745;
+}
+
+#generatePollBtn:hover {
+  background-color: #218838;
+}
+
+.poll-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.poll-option button {
+  margin-right: 10px;
+  flex: 1;
+}
+
+.poll-option span {
+  width: 50px;
+  text-align: center;
+  background-color: #ddd;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.correct-answer, .feedback {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.feedback {
+  font-size: 1.2em;
+}
