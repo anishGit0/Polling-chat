@@ -1,5 +1,6 @@
 // Initialize Socket.io connection
-const socket =  io('https://polling-chat.vercel.app');
+const socket = io(window.location.hostname === 'localhost' ? 'http://localhost:4000' : 
+    'https://polling-chat.vercel.app');
 
 
 // DOM Elements
