@@ -1,7 +1,20 @@
 // Initialize Socket.io connection
 const socket = io(window.location.hostname === 'localhost' ? 'http://localhost:4000' : 
-    'https://polling-chat.vercel.app');
+    'https://polling-chat.vercel.app', {
+        transports: ['websocket'],
+        upgrade: true,
+        rejectUnauthorized: false,
+        timeout: 10000, // 10 seconds
+    }
+);
 
+socket.on('connect_error', (error) => {
+    console.error('Connection error:', error);
+});
+    
+socket.on('disconnect', () => {
+    console.log('Disconnected');
+});
 
 // DOM Elements
 const pollList = document.getElementById('pollList');
