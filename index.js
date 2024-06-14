@@ -58,6 +58,8 @@ io.on('connection', (socket) => {
         if (poll) {
             poll.votes[data.optionIndex]++;
             io.emit('updatePoll', poll);
+        } else {
+            return; // Prevent errors when poll is not found
         }
     });
 
